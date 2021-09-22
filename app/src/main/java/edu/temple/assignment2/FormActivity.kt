@@ -15,25 +15,22 @@ class FormActivity : AppCompatActivity() {
         val password = findViewById<EditText>(R.id.editTextPassword)
         val passwordConfirm = findViewById<EditText>(R.id.editTextPasswordConfirm)
         val saveButton: Button = findViewById<Button>(R.id.saveButton)
-
+        
         saveButton.setOnClickListener {
-            //check if the EditText have values or not
-            if (fullName.text.toString().trim().isNullOrBlank()) {
-                fullName.setError("Full name required")
-            } else if (email.text.toString().trim().isNullOrBlank()) {
-                email.setError("Email Required")
-            } else if (password.text.toString().trim().isNullOrBlank()) {
-                password.setError("Password Required")
-            } else if (passwordConfirm.text.toString().trim().isNullOrBlank()){
-                passwordConfirm.setError("Password Confirmation Required")
-            } else if (!(password.text.toString().trim() == passwordConfirm.text.toString().trim())) {
-                passwordConfirm.setError("Passwords do not match")
-            } else {
-                Toast.makeText(applicationContext, "Welcome, " + fullName.text.toString() + ", to the Sign Up Form App!", Toast.LENGTH_SHORT).show()
+            when {
+                fullName.text.toString().trim().isNullOrBlank() -> fullName.setError("Full name required")
+                email.text.toString().trim().isNullOrBlank() -> email.setError("Email Required")
+                password.text.toString().trim().isNullOrBlank() -> password.setError("Password Required")
+                passwordConfirm.text.toString().trim().isNullOrBlank() -> passwordConfirm.setError("Password Confirmation Required")
+                !(password.text.toString().trim() == passwordConfirm.text.toString().trim()) -> passwordConfirm.setError(
+                    "Passwords do not match"
+                )
+                else -> Toast.makeText(applicationContext,
+                    "Welcome, " + fullName.text.toString() + ", to the Sign Up Form App!",
+                    Toast.LENGTH_SHORT).show()
             }
+
         }
-
-
     }
 
 
