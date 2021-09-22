@@ -19,21 +19,21 @@ class FormActivity : AppCompatActivity() {
         saveButton.setOnClickListener {
             //check if the EditText have values or not
             if (fullName.text.toString().trim().isNullOrBlank()) {
-                fullName.error = "Required"
-                Toast.makeText(applicationContext, "Full Name Required ", Toast.LENGTH_SHORT).show()
+                fullName.setError("Full name required")
             } else if (email.text.toString().trim().isNullOrBlank()) {
-                email.error = "Required"
-                Toast.makeText(applicationContext, "Email Required ", Toast.LENGTH_SHORT).show()
+                email.setError("Email Required")
             } else if (password.text.toString().trim().isNullOrBlank()) {
-                password.error = "Required"
-                Toast.makeText(applicationContext, "Password Required ", Toast.LENGTH_SHORT).show()
+                password.setError("Password Required")
             } else if (passwordConfirm.text.toString().trim().isNullOrBlank()){
-                passwordConfirm.error = "Required"
-                Toast.makeText(applicationContext, "Password Confirmation Required ", Toast.LENGTH_SHORT).show()
+                passwordConfirm.setError("Password Confirmation Required")
+            } else if (!(password.text.toString().trim() == passwordConfirm.text.toString().trim())) {
+                passwordConfirm.setError("Passwords do not match")
             } else {
-                Toast.makeText(applicationContext, "Login Successful", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Welcome, " + fullName.text.toString() + ", to the Sign Up Form App!", Toast.LENGTH_SHORT).show()
             }
         }
+
+
     }
 
 
