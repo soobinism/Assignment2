@@ -15,7 +15,7 @@ class FormActivity : AppCompatActivity() {
         val password = findViewById<EditText>(R.id.editTextPassword)
         val passwordConfirm = findViewById<EditText>(R.id.editTextPasswordConfirm)
         val saveButton: Button = findViewById<Button>(R.id.saveButton)
-        
+
         saveButton.setOnClickListener {
             when {
                 fullName.text.toString().trim().isNullOrBlank() -> fullName.setError("Full name required")
